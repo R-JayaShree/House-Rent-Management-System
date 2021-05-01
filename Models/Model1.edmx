@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BookStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cus_Id" Type="int" Nullable="false" />
+          <Property Name="Prop_Id" Type="int" Nullable="false" />
+          <Property Name="BookStatus" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Property_Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Property_Id" Type="int" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PropertyTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PropertyName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PropertyType" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="varchar" MaxLength="100" />
+          <Property Name="Rent" Type="bigint" Nullable="false" />
+          <Property Name="PropertySize" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PropertyAmenities" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PropertySpecifications" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PropertyRooms" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Propertyblacony" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PropertyBathrooms" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PropertyAddress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PropertyDescription" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SellerName" Type="varchar" MaxLength="100" />
+          <Property Name="SEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="SPhoneno" Type="bigint" />
+          <Property Name="SImage" Type="varbinary(max)" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="BookStatus" Type="nvarchar" MaxLength="100" />
+          <Property Name="PropertyImage" Type="varbinary(max)" />
+          <Property Name="BookTime" Type="datetime" />
+          <Property Name="Prop_id" Type="int" />
+        </EntityType>
+        <EntityType Name="RegisterCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="PhoneNumber" Type="bigint" Nullable="false" />
+          <Property Name="Aadharno" Type="bigint" Nullable="false" />
+          <Property Name="ResetPassWordCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProfileImage" Type="varbinary(max)" />
+          <Property Name="BookCount" Type="int" />
+        </EntityType>
+        <EntityType Name="RegisterUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="PhoneNumber" Type="bigint" />
+          <Property Name="Aadharno" Type="bigint" />
+          <Property Name="ResetPasswordCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProfileImage" Type="varbinary(max)" />
+        </EntityType>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="BookStatus" EntityType="Self.BookStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property_Images" EntityType="Self.Property_Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropertyTable" EntityType="Self.PropertyTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegisterCustomer" EntityType="Self.RegisterCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegisterUser" EntityType="Self.RegisterUser" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BookStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cus_Id" Type="Int32" Nullable="false" />
+          <Property Name="Prop_Id" Type="Int32" Nullable="false" />
+          <Property Name="BookStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Property_Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Property_Id" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PropertyTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Rent" Type="Int64" Nullable="false" />
+          <Property Name="PropertySize" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyAmenities" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertySpecifications" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyRooms" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Propertyblacony" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyBathrooms" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SellerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SPhoneno" Type="Int64" />
+          <Property Name="SImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BookStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PropertyImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BookTime" Type="DateTime" Precision="3" />
+          <Property Name="Prop_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RegisterCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="Int64" Nullable="false" />
+          <Property Name="Aadharno" Type="Int64" Nullable="false" />
+          <Property Name="ResetPassWordCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BookCount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RegisterUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="Int64" />
+          <Property Name="Aadharno" Type="Int64" />
+          <Property Name="ResetPasswordCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="Database1Entities5" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BookStatus" EntityType="Self.BookStatu" />
+          <EntitySet Name="Property_Images" EntityType="Self.Property_Images" />
+          <EntitySet Name="PropertyTables" EntityType="Self.PropertyTable" />
+          <EntitySet Name="RegisterCustomers" EntityType="Self.RegisterCustomer" />
+          <EntitySet Name="RegisterUsers" EntityType="Self.RegisterUser" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities5">
+          <EntitySetMapping Name="BookStatus">
+            <EntityTypeMapping TypeName="Database1Model.BookStatu">
+              <MappingFragment StoreEntitySet="BookStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Cus_Id" ColumnName="Cus_Id" />
+                <ScalarProperty Name="Prop_Id" ColumnName="Prop_Id" />
+                <ScalarProperty Name="BookStatus" ColumnName="BookStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Property_Images">
+            <EntityTypeMapping TypeName="Database1Model.Property_Images">
+              <MappingFragment StoreEntitySet="Property_Images">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Property_Id" ColumnName="Property_Id" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropertyTables">
+            <EntityTypeMapping TypeName="Database1Model.PropertyTable">
+              <MappingFragment StoreEntitySet="PropertyTable">
+                <ScalarProperty Name="Prop_id" ColumnName="Prop_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Rent" ColumnName="Rent" />
+                <ScalarProperty Name="PropertySize" ColumnName="PropertySize" />
+                <ScalarProperty Name="PropertyAmenities" ColumnName="PropertyAmenities" />
+                <ScalarProperty Name="PropertySpecifications" ColumnName="PropertySpecifications" />
+                <ScalarProperty Name="PropertyRooms" ColumnName="PropertyRooms" />
+                <ScalarProperty Name="Propertyblacony" ColumnName="Propertyblacony" />
+                <ScalarProperty Name="PropertyBathrooms" ColumnName="PropertyBathrooms" />
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="PropertyDescription" ColumnName="PropertyDescription" />
+                <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+                <ScalarProperty Name="SEmail" ColumnName="SEmail" />
+                <ScalarProperty Name="SPhoneno" ColumnName="SPhoneno" />
+                <ScalarProperty Name="SImage" ColumnName="SImage" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="BookStatus" ColumnName="BookStatus" />
+                <ScalarProperty Name="PropertyImage" ColumnName="PropertyImage" />
+                <ScalarProperty Name="BookTime" ColumnName="BookTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisterCustomers">
+            <EntityTypeMapping TypeName="Database1Model.RegisterCustomer">
+              <MappingFragment StoreEntitySet="RegisterCustomer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Aadharno" ColumnName="Aadharno" />
+                <ScalarProperty Name="ResetPassWordCode" ColumnName="ResetPassWordCode" />
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+                <ScalarProperty Name="BookCount" ColumnName="BookCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisterUsers">
+            <EntityTypeMapping TypeName="Database1Model.RegisterUser">
+              <MappingFragment StoreEntitySet="RegisterUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Aadharno" ColumnName="Aadharno" />
+                <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

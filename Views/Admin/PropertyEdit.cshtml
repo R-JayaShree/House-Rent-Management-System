@@ -1,0 +1,211 @@
+﻿@model HouseRentManagementSystem.Models.PropertyTable
+
+@{
+    ViewBag.Title = "PropertyEdit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+    .form-control {
+        width: 70%;
+        margin-left: 15%;
+    }
+
+    .row {
+        margin-left: 5%;
+    }
+</style>
+<br>
+<legend style="text-align:center;width:60%;margin-left:15%;">EDIT PROPERTY </legend>
+<div style="margin-left:23%;font-size:1.1vw;margin-top:0%; ">
+
+    @using (Html.BeginForm("PropertyEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <!--<div style="color:red;margin-left:50px;"></div>-->
+        <div class="row">
+            <!--Show details are saved successfully message-->
+            <div class="col-lg-6">@ViewBag.Message</div>
+        </div>
+        <div class="row">
+            <!--Show details are saved successfully message-->
+        </div><br />
+        <div class="row">
+            <div class="col-lg-2">@Html.LabelFor(a => a.PropertyName)</div>
+            <div class="col-lg-6">
+                @Html.EditorFor(model => model.PropertyName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PropertyName, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;margin-left:8%;" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">@Html.LabelFor(a => a.PropertyType)</div>
+            <div class="col-lg-6">
+                @Html.EditorFor(model => model.PropertyType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PropertyType, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;margin-left:8%;" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2">@Html.LabelFor(a => a.Status)</div>
+            <div class="col-lg-6">
+                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;margin-left:8%;" })
+                <div class="col-lg-12" style="color:red;">@ViewBag.Message</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">@Html.LabelFor(a => a.Rent)</div>
+            <div class="col-lg-6">
+                @Html.EditorFor(model => model.Rent, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Rent, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;margin-left:8%;" })
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2">@Html.LabelFor(a => a.PropertySize)</div>
+            <div class="col-lg-6">
+                @Html.EditorFor(model => model.PropertySize, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PropertySize, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;margin-left:8%;" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">@Html.LabelFor(a => a.PropertyAmenities)</div>
+            <div class="col-lg-6">
+                @Html.EditorFor(model => model.PropertyAmenities, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PropertyAmenities, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;margin-left:8%;" })
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-2">@Html.LabelFor(a => a.PropertySpecifications)</div>
+            <div class="col-lg-6">
+                @Html.EditorFor(model => model.PropertySpecifications, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PropertySpecifications, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;margin-left:8%;" })
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-2">@Html.LabelFor(a => a.PropertyRooms)</div>
+            <div class="col-lg-6">
+                @Html.EditorFor(model => model.PropertyRooms, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PropertyRooms, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;margin-left:8%;" })
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2">@Html.LabelFor(a => a.Propertyblacony)</div>
+            <div class="col-lg-6">
+                @Html.EditorFor(model => model.Propertyblacony, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Propertyblacony, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;margin-left:8%;" })
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2">@Html.LabelFor(a => a.PropertyBathrooms)</div>
+            <div class="col-lg-6">
+                @Html.EditorFor(model => model.PropertyBathrooms, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PropertyBathrooms, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;margin-left:8%;" })
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2">@Html.LabelFor(a => a.PropertyAddress)</div>
+            <div class="col-lg-6">
+                @Html.EditorFor(model => model.PropertyAddress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PropertyAddress, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;margin-left:8%;" })
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-2">@Html.LabelFor(a => a.PropertyDescription)</div>
+            <div class="col-lg-6">
+                @Html.EditorFor(model => model.PropertyDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PropertyDescription, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;margin-left:8%;" })
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.HiddenFor(model => model.SellerName, new { Value = @Convert.ToString(Session["Name"]) })
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.HiddenFor(model => model.SEmail, new { Value = @Convert.ToString(Session["SEmail"]) })
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.HiddenFor(model => model.SPhoneno, new { Value = @Convert.ToString(Session["SPhone"]) })
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+
+                @{
+                    var base64 = Convert.ToBase64String(ViewBag.image);
+
+                    @Html.HiddenFor(model => model.SImage, new { Value = base64 })
+                }
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-left:5%;">
+            @Html.LabelFor(a => a.PropertyImage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <br>
+                <input type="file" name="image" id="image" style="margin-left:10%;" />
+                @Html.ValidationMessageFor(model => model.PropertyImage, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;" })
+            </div>
+        </div>
+
+
+        <div class="form-group" style="margin-left:5%;">
+            <div class="control-label col-md-2" style="font-weight:bold;">
+                HouseImages
+            </div>
+            <div class="col-md-10">
+                <br>
+                <input type="file" name="images" id="images" style="margin-left:10%;" multiple="multiple" />
+                @Html.ValidationMessageFor(model => model.PropertyImage, "", new { @class = "text-danger", style = "font-size:0.8vw;color:red;white-space: normal ;resize:none;" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.HiddenFor(model => model.Prop_id, new { Value = @Convert.ToString(Session["P_Id"]) })
+
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="UPDATE" class="btn btn-primary" style="font-size:1.1vw;padding:10px 20px 10px 20px;margin-top:2%;border:none;margin-left:265px;" />
+        </div><br>
+    </div>
+    }
+</div>
+

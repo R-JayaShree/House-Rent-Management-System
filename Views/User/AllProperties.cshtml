@@ -1,0 +1,269 @@
+﻿@model IEnumerable<HouseRentManagementSystem.Models.PropertyTable>
+
+@{
+    ViewBag.Title = "AllProperties";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            user-select: none;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 5px;
+        }
+
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td{
+            text-align: left;
+            padding: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #ex1 {
+            width: 10%;
+            height: 230px;
+            
+        }
+
+        table td {
+            border-collapse: collapse;
+        }
+
+        table td {
+            border: 1px solid black;
+        }
+
+        .k {
+            padding: 10px 95px 10px 95px;
+            text-align: center;
+            background-color: darkseagreen;
+            border: 1px solid darkseagreen;
+            border-radius: 4px;
+            display: block;
+            font-family: inherit;
+            font-size: 16px;
+            padding: 5px;
+            margin-top: 1%;
+            height: 30px;
+            width: 100px;
+            text-decoration: none;
+            margin-left: 75%;
+        }
+
+        a:-webkit-any-link {
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .k:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        .button2:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        .j {
+            padding: 10px 95px 10px 95px;
+            text-align: center;
+            background-color: Highlight;
+            border: 1px solid Highlight;
+            border-radius: 4px;
+            display: block;
+            font-family: inherit;
+            font-size: 16px;
+            padding: 5px;
+            margin-top: -2.5%;
+            height: 30px;
+            width: 150px;
+            text-decoration: none;
+            margin-left: 81%;
+        }
+
+        .j:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <h1 style="margin-left:40%;">ALL PROPERTIES </h1><br>
+                                                     <p>
+                                                         @using (@Html.BeginForm("AllProperties", "User", FormMethod.Get))
+                                                         {
+                                                             <div style="margin-left:10%; width: 81.5%;height: 45px;border: 1px solid black;padding:10px;">
+                                                                 Search By:
+                                                                 
+                                                                 @Html.TextBox("search")
+                                                                  
+                                                                 <input type="submit" class="button2" value="Search Property" style=" color:black;padding: 10px 95px 10px 95px; text-align: center; background-color: lightblue; border: 1px solid lightblue; border-radius: 4px; display: block; font-family: inherit; font-size: 16px; padding: 5px; margin-top: -2%; height: 30px; width: 150px; text-decoration: none; margin-left: 21%;">
+
+                                                             </div>
+                                                             <div class="j">@Html.ActionLink("All Properties", "AllProperties", new {id = "null" })</div>
+                                                             <!--<input type="submit" class="button2" value="All Property" style=" padding: 10px 95px 10px 95px; text-align: center; background-color: darkseagreen; border: 1px solid darkseagreen; border-radius: 4px; display: block; font-family: inherit; font-size: 16px; padding: 5px; margin-top: -2.5%; height: 30px; width: 150px; text-decoration: none; margin-left: 81%;">-->
+                                                         }
+                                                     </p>
+
+    <br>
+    <br />
+
+    @if (Model.Count() == 0)
+    {
+        <p style="margin-left:38%;color:red;font-size:x-large;">
+            No records match search criteria
+        </p>
+    }
+    else
+    {
+        {
+
+            int i = 1;
+
+            foreach (var item in Model)
+            {
+                if (i % 2 != 0)
+                {
+                <table id="ex1" border="1" style="float:left;margin-left: 11.8%;">
+                    <tr>
+                        <td style="width:20%;">
+                            @{
+                                var imageDataURL = "";
+
+                                if (item.PropertyImage != null)
+                                {
+                                    string imageBase64Data = Convert.ToBase64String(item.PropertyImage);
+                                    imageDataURL = string.Format("data:image/jpeg;base64,{0}", imageBase64Data);
+                                    <img src="@imageDataURL" style="height:200px; width:200px;border-radius:0%;align-content:center;">
+
+                                }
+
+                            }
+                        </td>
+                        <td>
+                            <table id="ex2">
+                                <tr>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">Property Name</td>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyName)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">Property Type</td>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyType)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">Status</td>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.Status)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">Rent</td>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.Rent)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">Property Address</td>
+                                    <td style="padding:10px;">@Html.DisplayFor(modelItem => item.PropertyAddress)</td>
+                                </tr>
+                                <tr style="background-color: white;border: 1px solid white;">
+                                    <td class="k">@Html.ActionLink("View Details", "ViewFullDetails", new { id = item.Prop_id })</td>
+                                    
+                                    <!--<td colspan="2" style="padding:10px 95px 10px 95px;text-align:center;background-color: darkseagreen;border: 1px solid darkseagreen;border-radius: 4px;display: block;font-family: inherit;font-size: 16px;padding: 5px;margin-top: 1%;height: 20px;width: 100px;text-decoration: none;text-align: center;margin-left:75%;">View Details</td>-->
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                                }
+                                else
+                                {
+                <br>
+                <table id="ex1" border="1" style="float:inherit;margin-top:-1.25%;">
+                    <tr>
+                        <td style="width:20%;">
+                            @{
+                                var imageDataURL = "";
+
+                                if (item.PropertyImage != null)
+                                {
+                                    string imageBase64Data = Convert.ToBase64String(item.PropertyImage);
+                                    imageDataURL = string.Format("data:image/jpeg;base64,{0}", imageBase64Data);
+                                    <img src="@imageDataURL" style="height:200px; width:200px;border-radius:0%;align-content:center;">
+
+                                }
+
+                            }
+                        </td>
+                        <td>
+                            <table id="ex2">
+                                <tr>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">Property Name</td>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyName)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">Property Type</td>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyType)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">Status</td>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.Status)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">Rent</td>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.Rent)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px;padding-right:30px;white-space:nowrap;">Property Address</td>
+                                    <td style="padding:10px;">@Html.DisplayFor(modelItem => item.PropertyAddress)</td>
+                                </tr>
+                                <tr style="background-color: white;border: 1px solid white;">
+                                    <td class="k">@Html.ActionLink("View Details", "ViewFullDetails", new { id = item.Prop_id })</td>
+                                    <!--<td colspan="2" style="padding:10px 95px 10px 95px;text-align:center;background-color: darkseagreen;border: 1px solid darkseagreen;border-radius: 4px;display: block;font-family: inherit;font-size: 16px;padding: 5px;margin-top: 1%;height: 20px;width: 100px;text-decoration: none;text-align: center;margin-left:75%;">View Details</td>-->
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                                            }
+                                            i++;
+                                        }
+
+                                    }
+                                }
+</body>
+</html>

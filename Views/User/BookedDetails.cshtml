@@ -1,0 +1,195 @@
+﻿@model IEnumerable<HouseRentManagementSystem.Models.PropertyTable>
+@{
+    ViewBag.Title = "BookedDetails";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    int i = 1;
+}
+<html>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        user-select: none;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    table, th, td {
+        border: 1.5px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 20px 0px 20px 0px;
+        word-wrap: break-word;
+    }
+
+    td {
+        text-align: center;
+        font-family: sans-serif;
+    }
+
+    th {
+        background-color: lightblue;
+        color: black;
+        font-weight: unset;
+    }
+
+    td {
+        padding: 15px 15px 15px 15px;
+    }
+
+    .k {
+        background-color: darkseagreen;
+        border: 1px solid darkseagreen;
+        border-radius: 4px;
+        display: block;
+        font-family: inherit;
+        font-size: 16px;
+        padding: 5px;
+        margin-top: 1%;
+        height: 20px;
+        width: 100px;
+        text-decoration: none;
+        margin-left: 2%;
+        text-align: center;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+
+    .j1 {
+        background-color: red;
+        border: 1px solid red;
+        border-radius: 4px;
+        color: black;
+        display: block;
+        font-family: inherit;
+        font-size: 16px;
+        padding: 5px;
+        margin-top: 5px;
+        width: 120px;
+        text-decoration: none;
+        margin-left: 7%;
+    }
+
+    .j {
+        background-color: yellow;
+        border: 1px solid yellow;
+        border-radius: 4px;
+        color: black;
+        display: block;
+        font-family: inherit;
+        font-size: 16px;
+        padding: 5px;
+        margin-top: 5px;
+        width: 120px;
+        text-decoration: none;
+        margin-left:7%;
+    }
+    a:-webkit-any-link {
+        cursor: pointer;
+        text-decoration: none;
+    }
+</style>
+<body>
+    <br><br><br>
+
+    @if (Model.Count() == 0)
+    {
+        <h1 style="margin-left:36%;margin-top:13%;">Your Booking List is empty</h1>
+        <h2 style="margin-left:28%;font-weight:lighter;margin-top:2%;color:crimson;">You have Properties in your All Property page waiting to be yours..!</h2>
+    }
+    else
+    {
+        <legend style="text-align:center;width:60%;margin-left:20%;margin-top:-2%;font-size:25px;">BOOKED DETAILS</legend>
+        foreach (var item in Model)
+
+        {
+
+
+
+            <table style="margin-top:1%;margin-left:16.5%;width:1000px;">
+                <tr>
+                    <th>Id</th>
+                    <th>Property Image</th>
+                    <th>Property Name</th>
+                    <th style="padding:10px;">Rent</th>
+                    <th>Status</th>
+                    @if (item.BookStatus == "Accepted")
+                    {
+                        <th>Booked Time</th>
+                    }
+                    <th>Actions</th>
+                </tr>
+
+                <tr>
+
+                    <td>
+                        @i
+                    </td>
+                    <td>
+
+                        @{
+                            var imageDataURL = "";
+
+                            if (item.PropertyImage != null)
+                            {
+                                string imageBase64Data = Convert.ToBase64String(item.PropertyImage);
+                                imageDataURL = string.Format("data:image/jpeg;base64,{0}", imageBase64Data);
+                                <img src="@imageDataURL" style="height:120px; width:190px;border-radius:0%;margin-left:-5%;">
+
+                            }
+
+                        }
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PropertyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rent)
+                    </td>
+                    @if (item.BookStatus == "Waiting")
+                    {
+
+                        <td style="text-decoration:underline;color:darkorange;">
+                            @Html.DisplayFor(modelItem => item.BookStatus)
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="text-decoration:underline;color:darkgreen;">
+                            @Html.DisplayFor(modelItem => item.BookStatus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookTime)
+                        </td>
+                    }
+                    <td class="text-center">
+                        <div class="j">@Html.ActionLink("ViewDetails", "ViewFullDetails1", new { id = item.Prop_id })</div>
+                        @if (item.BookStatus != null) { 
+                        <div class="j1">@Html.ActionLink("Cancel", "Cancelbook", new { id = item.Prop_id })</div>}
+                    </td>
+                </tr>
+
+
+            </table>
+            if (item.BookStatus == "Accepted")
+            {
+                <h1 style="margin-left:30%;margin-top:5%;color:darkgreen;">Your Bookings Accepted Successfully..!</h1>
+                <h2 style="margin-left:35%;font-weight:lighter;margin-top:1%;color:crimson;">Any Further Information Call Via <h2 style="margin-left:58%;font-weight:lighter;margin-top:-1.8%;color:crimson;text-decoration:underline;color:blueviolet;">@item.SPhoneno</h2></h2>
+            }
+            i++;
+        }
+
+    }
+
+
+</body>
+</html>

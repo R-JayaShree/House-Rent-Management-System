@@ -1,0 +1,390 @@
+﻿@model HouseRentManagementSystem.ViewModel.AllTable
+
+@{
+    ViewBag.Title = "ViewProperties";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            user-select: none;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .h {
+            background-color: #eee;
+            width: 80%;
+            height: 550px;
+            margin-left: 13%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 5px;
+        }
+
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 50%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 10px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #ex1 {
+            width: 50%;
+            height: 230px;
+            margin-left: 13%;
+        }
+
+        #ex2 {
+            width: 30%;
+            height: 20px;
+            margin-right: 7%;
+            margin-top: -34.4%;
+            float: right;
+        }
+
+        table td {
+            border-collapse: collapse;
+        }
+
+        .m {
+            padding: 15px;
+            padding-bottom: 35px;
+            background-color: lightskyblue;
+            border: 1px solid lightskyblue;
+            border-radius: 4px;
+            display: block;
+            font-family: inherit;
+            font-size: 16px;
+            margin-top: -7%;
+            height: 30px;
+            width: 200px;
+            text-decoration: none;
+            margin-left: 71.5%;
+            text-align: center;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        .mySlides {
+            border-radius: 5px;
+            transition: 0.3s;
+            width: 1000px;
+            height: 500px;
+            object-fit: cover;
+            margin-top: 0%;
+            margin-left: -1%;
+        }
+
+        .modal {
+            display: none;
+            border-radius: 5px;
+            margin-top: -38%;
+            margin-left: 5%;
+            overflow-y: hidden;
+        }
+
+        .modalImage {
+            width: 50%;
+            height: 50%;
+            border-radius: 5px;
+            overflow-x: hidden;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 8%;
+            top: 90%;
+            width: 80%; /* Full width */
+            height: 80%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 80px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius:10px;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+    </style>
+</head>
+<body>
+
+    <br>
+    <h1 style="margin-left:42%;">PROPERTY DETAILS</h1>
+    <div class="h">
+        <br>
+        <div class="w3-content w3-display-container">
+            @foreach (var item in Model.PropertyTable)
+            {
+
+                var imageDataURL = "";
+                if (item.PropertyImage != null)
+                {
+                    string imageBase64Data = Convert.ToBase64String(item.PropertyImage);
+                    imageDataURL = string.Format("data:image/jpeg;base64,{0}", imageBase64Data);
+                    <img class="mySlides" src="@imageDataURL" />
+                }
+
+            }
+            @foreach (var item1 in Model.Property_Images)
+            {
+
+                var imageDataURL = "";
+                if (item1.Image != null)
+                {
+                    string imageBase64Data = Convert.ToBase64String(item1.Image);
+                    imageDataURL = string.Format("data:image/jpeg;base64,{0}", imageBase64Data);
+                    <img class="mySlides" src="@imageDataURL" />
+                }
+
+            }
+            <button class="w3-button w3-transparent w3-display-left" onclick="plusDivs(-1)" style="margin-left:-7%;">&#10094;</button>
+            <button class="w3-button w3-transparent w3-display-right" onclick="plusDivs(1)" style="margin-right:-7%;">&#10095;</button>
+        </div>
+
+        <script>
+            var slideIndex = 1;
+            showDivs(slideIndex);
+
+            function plusDivs(n) {
+                showDivs(slideIndex += n);
+            }
+
+            function showDivs(n) {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                if (n > x.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = x.length }
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                x[slideIndex - 1].style.display = "block";
+            }
+        </script>
+        <div class="modal">
+            <img class="modalImage" id="img01" />
+        </div>
+        <script>
+            var modalEle = document.querySelector(".modal");
+            var modalImage = document.querySelector(".modalImage");
+            Array.from(document.querySelectorAll(".ImgThumbnail")).forEach(item => {
+                item.addEventListener("click", event => {
+                    modalEle.style.display = "block";
+                    modalImage.src = event.target.src;
+                });
+            });
+            document.querySelector(".close").addEventListener("click", () => {
+                modalEle.style.display = "none";
+            });
+        </script>
+    </div>
+    @foreach (var item in Model.PropertyTable)
+    {
+        <table id="ex1">
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Property Name</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyName)</td>
+            </tr>
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Property Type</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyType)</td>
+            </tr>
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Status</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.Status)</td>
+            </tr>
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Rent</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.Rent)</td>
+            </tr>
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Property Size</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertySize)</td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Property Amenities</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyAmenities)</td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Property Specifications</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertySpecifications)</td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Property Rooms</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyRooms)</td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Property Blacony</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.Propertyblacony)</td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Property Bathrooms</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyBathrooms)</td>
+            </tr>
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Property Address</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyAddress)</td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Property Description</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyDescription)</td>
+            </tr>
+        </table><br>
+        <table id="ex2">
+
+            <tr>
+                <td>Seller Details :</td>
+                <td style="padding:10px;white-space:nowrap;"></td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Seller ProfileImage</td>
+                <td style="padding:10px;white-space:nowrap;">
+                    @{
+                        var imageD = "";
+                        if (item.PropertyImage != null)
+                        {
+                            string imageBase64Data = Convert.ToBase64String(item.SImage);
+                            imageD = string.Format("data:image/jpeg;base64,{0}", imageBase64Data);
+                            <img src="@imageD" style="height:200px; width:200px;border-radius:0%;align-content:center;">
+                        }
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Seller Name</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.SellerName)</td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Seller EmailID</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.SEmail)</td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;white-space:nowrap;">Seller PhoneNumber</td>
+                <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.SPhoneno)</td>
+            </tr>
+
+        </table>
+
+        <div>
+            <input type="submit" value="BOOK" class="m" id="myBtn" />
+        </div><br>
+        using (Html.BeginForm("SaveBookingDetails", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <p style="font-size:xx-large;font-family:Segoe UI,Arial,sans-serif;font-style: oblique;font-variant: small-caps;">Your booking request is sent to Admin. Your booking will be confirmed once Admin accepts your request. Kindly check your booked list.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thank You !</p>
+                </div>
+                <div>
+                    <input type="submit" value="Cancel" class="m" id="myBtn" name="book" style="margin-top:1.5%;width:100px;margin-left:72%;background-color:lightcoral;border: 1px solid lightcoral;" />
+                    <input type="submit" value="OK" class="m" id="myBtn" name="book" style="margin-top:-4.3%;width:100px;margin-left:81.5%;background-color:lightgreen;border: 1px solid lightgreen;" />
+                </div>
+            </div>
+        }
+        <script>
+            // Get the modal
+            var modal = document.getElementById("myModal");
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+    }
+</body>
+</html>

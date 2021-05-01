@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities5">
+    <EntitySetMapping Name="BookStatus">
+      <EntityTypeMapping TypeName="Database1Model.BookStatu">
+        <MappingFragment StoreEntitySet="BookStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Cus_Id" ColumnName="Cus_Id" />
+          <ScalarProperty Name="Prop_Id" ColumnName="Prop_Id" />
+          <ScalarProperty Name="BookStatus" ColumnName="BookStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Property_Images">
+      <EntityTypeMapping TypeName="Database1Model.Property_Images">
+        <MappingFragment StoreEntitySet="Property_Images">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Property_Id" ColumnName="Property_Id" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PropertyTables">
+      <EntityTypeMapping TypeName="Database1Model.PropertyTable">
+        <MappingFragment StoreEntitySet="PropertyTable">
+          <ScalarProperty Name="Prop_id" ColumnName="Prop_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+          <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Rent" ColumnName="Rent" />
+          <ScalarProperty Name="PropertySize" ColumnName="PropertySize" />
+          <ScalarProperty Name="PropertyAmenities" ColumnName="PropertyAmenities" />
+          <ScalarProperty Name="PropertySpecifications" ColumnName="PropertySpecifications" />
+          <ScalarProperty Name="PropertyRooms" ColumnName="PropertyRooms" />
+          <ScalarProperty Name="Propertyblacony" ColumnName="Propertyblacony" />
+          <ScalarProperty Name="PropertyBathrooms" ColumnName="PropertyBathrooms" />
+          <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+          <ScalarProperty Name="PropertyDescription" ColumnName="PropertyDescription" />
+          <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+          <ScalarProperty Name="SEmail" ColumnName="SEmail" />
+          <ScalarProperty Name="SPhoneno" ColumnName="SPhoneno" />
+          <ScalarProperty Name="SImage" ColumnName="SImage" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="BookStatus" ColumnName="BookStatus" />
+          <ScalarProperty Name="PropertyImage" ColumnName="PropertyImage" />
+          <ScalarProperty Name="BookTime" ColumnName="BookTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegisterCustomers">
+      <EntityTypeMapping TypeName="Database1Model.RegisterCustomer">
+        <MappingFragment StoreEntitySet="RegisterCustomer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Aadharno" ColumnName="Aadharno" />
+          <ScalarProperty Name="ResetPassWordCode" ColumnName="ResetPassWordCode" />
+          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+          <ScalarProperty Name="BookCount" ColumnName="BookCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegisterUsers">
+      <EntityTypeMapping TypeName="Database1Model.RegisterUser">
+        <MappingFragment StoreEntitySet="RegisterUser">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Aadharno" ColumnName="Aadharno" />
+          <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
+          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

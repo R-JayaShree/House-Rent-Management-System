@@ -1,0 +1,204 @@
+﻿@model HouseRentManagementSystem.ViewModel.AllTable
+@{
+    ViewBag.Title = "AllRequestedDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            user-select: none;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 5px;
+        }
+
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #ex1 {
+            width: 10%;
+            height: 230px;
+        }
+
+        table td {
+            border-collapse: collapse;
+        }
+
+        table td {
+            border: 1px solid black;
+        }
+
+        .k {
+            padding: 10px 95px 10px 95px;
+            text-align: center;
+            background-color: darkseagreen;
+            border: 1px solid darkseagreen;
+            border-radius: 4px;
+            display: block;
+            font-family: inherit;
+            font-size: 16px;
+            padding: 5px;
+            margin-top: 1%;
+            height: 30px;
+            width: 100px;
+            text-decoration: none;
+            margin-left: 75%;
+        }
+
+        a:-webkit-any-link {
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .k:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        .button2:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        .j {
+            padding: 10px 95px 10px 95px;
+            text-align: center;
+            background-color: Highlight;
+            border: 1px solid Highlight;
+            border-radius: 4px;
+            display: block;
+            font-family: inherit;
+            font-size: 16px;
+            padding: 5px;
+            margin-top: -2.5%;
+            height: 30px;
+            width: 150px;
+            text-decoration: none;
+            margin-left: 81%;
+        }
+
+            .j:hover {
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+            }
+    </style>
+</head>
+<body>
+
+    <br>
+    @if (Model.PropertyTable.Count() == 0)
+    {
+        <h1 style="margin-left:36%;margin-top:15%;font-style: oblique;font-variant: small-caps;">Your Waiting List is empty !</h1>
+
+    }
+    else
+    {
+        <legend style="text-align:center;width:60%;margin-left:20%;margin-top:1%;font-size:25px;">ALL REQUESTED DETAILS</legend>
+        <br>
+        <br />
+            foreach (var item in Model.PropertyTable)
+            {
+                foreach (var item1 in Model.RegisterUser)
+                {
+                    if (item.CustomerName == item1.Email && item.BookStatus == "Waiting")
+                    {
+                            <table id="ex1" border="1" style="float:inline-start;margin-left:15%;width:70%;">
+                                <tr>
+                                    <td style="width:30%;">
+                                        @{
+                                            var imageDataURL = "";
+
+                                            if (item.PropertyImage != null)
+                                            {
+                                                string imageBase64Data = Convert.ToBase64String(item.PropertyImage);
+                                                imageDataURL = string.Format("data:image/jpeg;base64,{0}", imageBase64Data);
+                                                <img src="@imageDataURL" style="height:200px; width:390px;border-radius:0%;align-content:center;">
+
+                                            }
+
+                                        }
+                                    </td>
+                                    <td>
+                                        <table id="ex2">
+                                            <tr>
+                                                <td style="padding:10px;padding-right:30px;white-space:nowrap;">Property Name</td>
+                                                <td style="padding:10px;padding-right:30px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyName)</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding:10px;padding-right:30px;white-space:nowrap;">Status</td>
+                                                <td style="padding:10px;padding-right:30px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.Status)</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding:10px;padding-right:30px;white-space:nowrap;">Rent</td>
+                                                <td style="padding:10px;padding-right:30px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.Rent)</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td style="padding:10px;padding-right:30px;white-space:nowrap;">Customer Name</td>
+                                                <td style="padding:10px;padding-right:30px;white-space:nowrap;">@Html.DisplayFor(modelItem => item1.FirstName)@Html.DisplayFor(modelItem => item1.LastName)</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding:10px;padding-right:30px;white-space:nowrap;">Customer Contact</td>
+                                                <td style="padding:10px;padding-right:30px;white-space:nowrap;">@Html.DisplayFor(modelItem => item1.PhoneNumber)</td>
+                                            </tr>
+                                            
+                                            <tr style="background-color: white;border: 1px solid white;">
+                                                <td class="k">@Html.ActionLink("View Details", "BookingDetails", new { id = item.Prop_id })</td>
+                                            </tr>
+                                            <!--<td colspan="2" style="padding:10px 95px 10px 95px;text-align:center;background-color: darkseagreen;border: 1px solid darkseagreen;border-radius: 4px;display: block;font-family: inherit;font-size: 16px;padding: 5px;margin-top: 1%;height: 20px;width: 100px;text-decoration: none;text-align: center;margin-left:75%;">View Details</td>-->
+
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                                            
+                                                            }
+
+                                                        }
+                                                    }
+                                                
+                                            }
+            
+    </body>
+</html>

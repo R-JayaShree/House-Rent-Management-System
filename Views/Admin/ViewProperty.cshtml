@@ -1,0 +1,176 @@
+﻿@model IEnumerable<HouseRentManagementSystem.Models.PropertyTable>
+
+@{
+    ViewBag.Title = "ViewProperty";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int i = 1;
+}
+
+<style>
+    table, th, td {
+        border: 1.5px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px 0px 10px 0px;
+        word-wrap: break-word;
+    }
+
+    td {
+        text-align: center;
+        font-family: sans-serif;
+    }
+
+    th {
+        background-color: lightblue;
+        color: black;
+        font-weight: unset;
+    }
+
+    td {
+        padding: 15px 15px 15px 15px;
+    }
+
+    .k {
+        background-color: darkseagreen;
+        border: 1px solid darkseagreen;
+        border-radius: 4px;
+        display: block;
+        font-family: inherit;
+        font-size: 16px;
+        padding: 5px;
+        margin-top: 1%;
+        height: 20px;
+        width: 100px;
+        text-decoration: none;
+        margin-left: 2%;
+        text-align: center;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+    .j1 {
+        background-color: red;
+        border: 1px solid red;
+        border-radius: 4px;
+        color: black;
+        display: block;
+        font-family: inherit;
+        font-size: 16px;
+        padding: 5px;
+        margin-top: 5px;
+        height: 20px;
+        width: 50px;
+        text-decoration: none;
+    }
+    .j {
+        background-color: yellow;
+        border: 1px solid yellow;
+        border-radius: 4px;
+        color: black;
+        display: block;
+        font-family: inherit;
+        font-size: 16px;
+        padding: 5px;
+        margin-top: 5px;
+        height: 20px;
+        width: 50px;
+        text-decoration: none;
+    }
+</style>
+<p class="k">
+    @Html.ActionLink("Add New", "AddProperty")
+</p>
+<legend style="text-align:center;width:60%;margin-left:20%;margin-top:-2%;font-size:25px;"> PROPERTY LIST</legend>
+
+<table style="margin-top:1%;">
+    <tr>
+        <th>Id</th>
+        <th>Property Image</th>
+        <th>Property Name</th>
+        <th>Property Type</th>
+        <th>Status</th>
+        <th style="padding:10px;">Rent</th>
+        <th>Property Size</th>
+        <th>Property Amenities</th>
+        <th>Property Specifications</th>
+        <th>Property Rooms</th>
+        <th>Property blacony</th>
+        <th>Property Bathrooms</th>
+        <th>Property Address</th>
+        <th>Property Description</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @i
+            </td>
+            <td>
+
+                @{
+                    var imageDataURL = "";
+
+                    if (item.PropertyImage != null)
+                    {
+                        string imageBase64Data = Convert.ToBase64String(item.PropertyImage);
+                        imageDataURL = string.Format("data:image/jpeg;base64,{0}", imageBase64Data);
+                        <img src="@imageDataURL" style="height:100px; width:100px;border-radius:0%;">
+
+                    }
+
+                }
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertySize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyAmenities)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertySpecifications)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyRooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Propertyblacony)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyBathrooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyDescription)
+            </td>
+
+            <td class="text-center">
+                <div class="j">@Html.ActionLink("Edit", "PropertyEdit", new { id = item.Id })</div>
+                <div class="j1">@Html.ActionLink("Delete", "DeleteProperty", new { id = item.Prop_id })</div>
+            </td>
+        </tr>
+                        i++;
+                    }
+</table>
+
+

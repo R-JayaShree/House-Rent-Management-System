@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BookStatu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cus_Id" Type="Int32" Nullable="false" />
+    <Property Name="Prop_Id" Type="Int32" Nullable="false" />
+    <Property Name="BookStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Property_Images">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Property_Id" Type="Int32" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PropertyTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PropertyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PropertyType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Rent" Type="Int64" Nullable="false" />
+    <Property Name="PropertySize" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PropertyAmenities" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PropertySpecifications" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PropertyRooms" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Propertyblacony" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PropertyBathrooms" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PropertyAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PropertyDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SellerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SPhoneno" Type="Int64" />
+    <Property Name="SImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BookStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PropertyImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="BookTime" Type="DateTime" Precision="3" />
+    <Property Name="Prop_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="RegisterCustomer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumber" Type="Int64" Nullable="false" />
+    <Property Name="Aadharno" Type="Int64" Nullable="false" />
+    <Property Name="ResetPassWordCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="BookCount" Type="Int32" />
+  </EntityType>
+  <EntityType Name="RegisterUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumber" Type="Int64" />
+    <Property Name="Aadharno" Type="Int64" />
+    <Property Name="ResetPasswordCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityContainer Name="Database1Entities5" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BookStatus" EntityType="Self.BookStatu" />
+    <EntitySet Name="Property_Images" EntityType="Self.Property_Images" />
+    <EntitySet Name="PropertyTables" EntityType="Self.PropertyTable" />
+    <EntitySet Name="RegisterCustomers" EntityType="Self.RegisterCustomer" />
+    <EntitySet Name="RegisterUsers" EntityType="Self.RegisterUser" />
+  </EntityContainer>
+</Schema>

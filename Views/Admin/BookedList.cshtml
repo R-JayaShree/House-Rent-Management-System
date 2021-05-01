@@ -1,0 +1,183 @@
+﻿@model HouseRentManagementSystem.ViewModel.AllTable
+@{
+    ViewBag.Title = "BookedList";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int i = 1;
+}
+
+<style>
+    table, th, td {
+        border: 1.5px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 15px 15px 15px 15px;
+        word-wrap: break-word;
+    }
+
+    td {
+        text-align: center;
+        font-family: sans-serif;
+    }
+
+    th {
+        background-color: lightblue;
+        color: black;
+        font-weight: unset;
+    }
+
+    td {
+        padding: 15px 15px 15px 15px;
+    }
+
+    .k {
+        background-color: darkseagreen;
+        border: 1px solid darkseagreen;
+        border-radius: 4px;
+        display: block;
+        font-family: inherit;
+        font-size: 16px;
+        padding: 5px;
+        margin-top: 1%;
+        height: 20px;
+        width: 100px;
+        text-decoration: none;
+        margin-left: 2%;
+        text-align: center;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+
+    .j1 {
+        background-color: red;
+        border: 1px solid red;
+        border-radius: 4px;
+        color: black;
+        display: block;
+        font-family: inherit;
+        font-size: 16px;
+        padding: 5px;
+        margin-top: 5px;
+        height: 20px;
+        width: 70px;
+        text-decoration: none;
+    }
+
+    .j {
+        background-color: yellow;
+        border: 1px solid yellow;
+        border-radius: 4px;
+        color: black;
+        display: block;
+        font-family: inherit;
+        font-size: 16px;
+        padding: 5px;
+        margin-top: 5px;
+        height: 20px;
+        width: 70px;
+        text-decoration: none;
+    }
+</style>
+@if (Model.PropertyTable.Count() == 0)
+{
+    <h1 style="margin-left:36%;margin-top:15%;font-style: oblique;font-variant: small-caps;">Your Booked List is empty !</h1>
+
+}
+else
+{
+    <legend style="text-align:center;width:60%;margin-left:20%;margin-top:2%;font-size:25px;"> BOOKED LIST</legend>
+    <table style="margin-top:1%;">
+        <tr>
+            <th>Id</th>
+            <th>Property Image</th>
+            <th>Property Name</th>
+            <th>Property Status</th>
+            <th style="padding:10px;">Rent</th>
+            <th>Property Size</th>
+            <th>Customer Image</th>
+            <th>Customer Name</th>
+            <th>Customer ContactNo</th>
+            <th>Customer EmailId</th>
+            <th>Status</th>
+            <th>Booked Time</th>
+        </tr>
+
+        @foreach (var item in Model.PropertyTable)
+        {
+            <tr>
+                <td>
+                    @i
+                </td>
+                <td>
+                    @{
+                        var imageDataURL = "";
+
+                        if (item.PropertyImage != null)
+                        {
+                            string imageBase64Data = Convert.ToBase64String(item.PropertyImage);
+                            imageDataURL = string.Format("data:image/jpeg;base64,{0}", imageBase64Data);
+                            <img src="@imageDataURL" style="height:100px; width:100px;border-radius:0%;">
+
+                        }
+
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropertyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropertySize)
+                </td>
+
+                @foreach (var item1 in Model.RegisterUser)
+                {
+                    <td>
+                        @{
+                            var image = "";
+
+                            if (item1.ProfileImage != null)
+                            {
+                                string imageBase64Data = Convert.ToBase64String(item1.ProfileImage);
+                                image = string.Format("data:image/jpeg;base64,{0}", imageBase64Data);
+                                <img src="@image" style="height:100px; width:100px;border-radius:0%;">
+
+                            }
+
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item1.FirstName)@Html.DisplayFor(modelItem => item1.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item1.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item1.Email)
+                    </td>
+
+                    <td style="color:green;">
+                        Booked
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookTime)
+                    </td>
+                }
+            </tr>
+            i++;
+        }
+
+
+    </table>
+}
+

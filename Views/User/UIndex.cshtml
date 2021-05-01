@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "UIndex";
+}
+<html>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        user-select: none;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    .mySlides {
+        display: none;
+        margin: 0;
+        background-repeat: no-repeat;
+        
+    }
+    .container {
+        height: 100%;
+        align-content: center;
+        
+    }
+    .card {
+        position: absolute;
+        height: 500px;
+        width: 65%;
+        margin-top: -40%;
+        margin-left:18%;
+        background-color: rgba(0,0,0,0.5) !important;
+    }
+    .bg1 {
+        color: black;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        width: 10%;
+        padding: 2px;
+        text-align-last: center;
+    }
+    .box-transparent {
+        position: fixed;
+        top: 1px;
+        left: 10px;
+        background-color: transparent;
+        padding: 5px;
+    }
+    .chevron-down {
+        fill: white;
+        margin: auto;
+        width: 5em;
+        height: 5em;
+        animation: hover-me .6s infinite ease-in-out alternate;
+    }
+    keyframes hover-me {
+        100%
+    {
+        transform: translate3d(0, 25px, 0);
+    }
+    }
+</style>
+<body>
+    
+    <div class="s" style="max-width:100%;">
+        <!--<img class="mySlides" src="~/Content/Images/MainHouse.jpg" style="width:100%;height:720px;">-->
+        <img class="mySlides" src="http://www.navaneethaproperty.com/images/slide10.jpg" style="width:100%;height:720px;">
+        <img class="mySlides" src="http://www.navaneethaproperty.com/images/slide9.jpg" style="width:100%;height:720px;">
+        <img class="mySlides" src="http://www.navaneethaproperty.com/images/slide5.jpg" style="width:100%;height:720px;">
+        <img class="mySlides" src="~/Content/Images/wallpaper2.gif" style="width:100%;height:720px;">
+        <div class="container">
+            <div class="card">
+                <h1 style="color:white;margin-left:9%;margin-top:10%;font-size:310%;">HOUSE RENTAL MANAGEMENT SYSTEM</h1>
+                <h3 style="color:white;margin-left:23%;">YOUR HOME THE WAY YOU'VE ALWAYS WANTED IT.</h3>
+                <H6 style="color:white;margin-left:6%;">When you live here,you get more than a home.You get an entire neighborhood where you can live,work,shop,dine and play.</H6>
+            </div>
+            <div class="bg1">
+                <div class="box-transparent">
+                    <a href="/User/AllProperties">
+                        <main>
+                            <svg viewBox="0 0 68 33" class="chevron-down">
+                                <path d="M.58 3.414l27.432 27.433c2.715 2.715 7.167 2.787 9.964.164L67.356 3.46 64.62.54 35.24 28.093c-1.222 1.146-3.212 1.114-4.4-.075L3.408.586.579 3.414z"></path>
+                            </svg>
+                        </main>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+        <script>
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length) { myIndex = 1 }
+                x[myIndex - 1].style.display = "block";
+                setTimeout(carousel, 3000); // Change image every 2 seconds
+            }
+        </script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+﻿@model HouseRentManagementSystem.ViewModel.AllTable
+@{
+    ViewBag.Title = "BookingDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            user-select: none;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .h {
+            background-color: #eee;
+            width: 80%;
+            height: 600px;
+            margin-left: 10%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 5px;
+        }
+
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 50%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 10px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #ex1 {
+            width: 50%;
+            height: 230px;
+            margin-left: 10%;
+        }
+
+        #ex2 {
+            width: 30%;
+            height: 20px;
+            margin-right: 10%;
+            margin-top: -34.4%;
+            float: right;
+        }
+
+        table td {
+            border-collapse: collapse;
+        }
+
+        .m {
+            padding: 15px;
+            padding-bottom: 35px;
+            background-color: green;
+            border: 1px solid green;
+            color: white;
+            border-radius: 4px;
+            display: block;
+            font-family: inherit;
+            font-size: 16px;
+            margin-top: 0%;
+            height: 30px;
+            width: 200px;
+            text-decoration: none;
+            margin-left: 5%;
+            text-align: center;
+        }
+
+        .m1 {
+            padding: 15px;
+            padding-bottom: 35px;
+            background-color: red;
+            border: 1px solid red;
+            color: white;
+            border-radius: 4px;
+            display: block;
+            font-family: inherit;
+            font-size: 16px;
+            margin-top: -11%;
+            height: 30px;
+            width: 200px;
+            text-decoration: none;
+            margin-left: 50%;
+            text-align: center;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .mySlides {
+            border-radius: 5px;
+            transition: 0.3s;
+            width: 1050px;
+            height: 500px;
+            object-fit: cover;
+            margin-top: -2%;
+            margin-left: -3.5%;
+        }
+
+        .modal {
+            display: none;
+            border-radius: 5px;
+            margin-top: -38%;
+            margin-left: 5%;
+            overflow-y: hidden;
+        }
+
+        .modalImage {
+            width: 50%;
+            height: 50%;
+            border-radius: 5px;
+            overflow-x: hidden;
+        }
+
+        .mySlides {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    @foreach (var item in Model.PropertyTable)
+    {
+        if (item.BookStatus == "Waiting")
+        {
+            <br>
+            <div class="h">
+                <br>
+                <h3 style="margin-left:35%;">REQUESTED PROPERTY DETAILS</h3><br>
+                <div class="w3-content w3-display-container">
+                    @{
+
+                        var imageDataURL = "";
+                        if (item.PropertyImage != null)
+                        {
+                            string imageBase64Data = Convert.ToBase64String(item.PropertyImage);
+                            imageDataURL = string.Format("data:image/jpeg;base64,{0}", imageBase64Data);
+                            <img class="mySlides" src="@imageDataURL" />
+                        }
+
+                    }
+                    @foreach (var item1 in Model.Property_Images)
+                    {
+
+                        var imageData = "";
+                        if (item1.Image != null)
+                        {
+                            string imageBase64Data = Convert.ToBase64String(item1.Image);
+                            imageData = string.Format("data:image/jpeg;base64,{0}", imageBase64Data);
+                            <img class="mySlides" src="@imageData" />
+                        }
+
+                    }
+                    <button class="w3-button w3-transparent w3-display-left" onclick="plusDivs(-1)" style="margin-left:-9%;">&#10094;</button>
+                    <button class="w3-button w3-transparent w3-display-right" onclick="plusDivs(1)" style="margin-right:-9%;">&#10095;</button>
+                </div>
+
+                <script>
+                    var slideIndex = 1;
+                    showDivs(slideIndex);
+
+                    function plusDivs(n) {
+                        showDivs(slideIndex += n);
+                    }
+
+                    function showDivs(n) {
+                        var i;
+                        var x = document.getElementsByClassName("mySlides");
+                        if (n > x.length) { slideIndex = 1 }
+                        if (n < 1) { slideIndex = x.length }
+                        for (i = 0; i < x.length; i++) {
+                            x[i].style.display = "none";
+                        }
+                        x[slideIndex - 1].style.display = "block";
+                    }
+                </script>
+                <div class="modal">
+                    <img class="modalImage" id="img01" />
+                </div>
+                <script>
+                    var modalEle = document.querySelector(".modal");
+                    var modalImage = document.querySelector(".modalImage");
+                    Array.from(document.querySelectorAll(".ImgThumbnail")).forEach(item => {
+                        item.addEventListener("click", event => {
+                            modalEle.style.display = "block";
+                            modalImage.src = event.target.src;
+                        });
+                    });
+                    document.querySelector(".close").addEventListener("click", () => {
+                        modalEle.style.display = "none";
+                    });
+                </script>
+            </div>
+            <table id="ex1">
+                <tr>
+                    <td style="padding:10px;white-space:nowrap;">Property Name</td>
+                    <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyName)</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;white-space:nowrap;">Property Type</td>
+                    <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyType)</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;white-space:nowrap;">Status</td>
+                    <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.Status)</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;white-space:nowrap;">Rent</td>
+                    <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.Rent)</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;white-space:nowrap;">Property Size</td>
+                    <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertySize)</td>
+                </tr>
+
+                <tr>
+                    <td style="padding:10px;white-space:nowrap;">Property Amenities</td>
+                    <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyAmenities)</td>
+                </tr>
+
+                <tr>
+                    <td style="padding:10px;white-space:nowrap;">Property Specifications</td>
+                    <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertySpecifications)</td>
+                </tr>
+
+                <tr>
+                    <td style="padding:10px;white-space:nowrap;">Property Rooms</td>
+                    <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyRooms)</td>
+                </tr>
+
+                <tr>
+                    <td style="padding:10px;white-space:nowrap;">Property Blacony</td>
+                    <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.Propertyblacony)</td>
+                </tr>
+
+                <tr>
+                    <td style="padding:10px;white-space:nowrap;">Property Bathrooms</td>
+                    <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyBathrooms)</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;white-space:nowrap;">Property Address</td>
+                    <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyAddress)</td>
+                </tr>
+
+                <tr>
+                    <td style="padding:10px;white-space:nowrap;">Property Description</td>
+                    <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item.PropertyDescription)</td>
+                </tr>
+            </table><br>
+        }
+
+        foreach (var item1 in Model.RegisterUser)
+        {
+            if (item.CustomerName == item1.Email)
+            {
+                <table id="ex2">
+
+                    <tr>
+                        <td style="padding:25.8px;white-space:nowrap;">Customer Details :</td>
+                        <td style="padding:10px;white-space:nowrap;"></td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;white-space:nowrap;">Customer ProfileImage</td>
+                        <td style="padding:10px;white-space:nowrap;">
+                            @{
+                                var imageD = "";
+                                if (item1.ProfileImage != null)
+                                {
+                                    string imageBase64Data = Convert.ToBase64String(item1.ProfileImage);
+                                    imageD = string.Format("data:image/jpeg;base64,{0}", imageBase64Data);
+                                    <img src="@imageD" style="height:240px; width:240px;border-radius:0%;align-content:center;">
+                                }
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;white-space:nowrap;">Customer Name</td>
+                        <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item1.FirstName)@Html.DisplayFor(modelItem => item1.LastName)</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:10px;white-space:nowrap;">Customer EmailID</td>
+                        <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item1.Email)</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:10px;white-space:nowrap;">Customer PhoneNumber</td>
+                        <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item1.PhoneNumber)</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:10px;white-space:nowrap;">Customer AadharNumber</td>
+                        <td style="padding:10px;white-space:nowrap;">@Html.DisplayFor(modelItem => item1.Aadharno)</td>
+                    </tr>
+                </table>
+                using (Html.BeginForm("SaveBookedDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div style="border:1px solid lightgrey;width:490px;margin-left:32%;padding:10px;">
+                        <input type="submit" value="ACCEPT" class="m" name="book" onclick="myFunction1()" />
+
+                        <input type="submit" value="REJECT" class="m1" name="book" onclick="myFunction()" />
+                    </div>
+                    <script>
+                        function myFunction1() {
+                            alert("Accepted Successfully");
+                        }
+                    </script>
+                    <script>
+                        function myFunction() {
+                            alert("Are you sure to want to REJECT the Booking");
+                        }
+                    </script>
+                    <br><br>
+                }
+            }
+        }
+    }
+</body>
+</html>
